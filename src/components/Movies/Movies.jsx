@@ -1,10 +1,11 @@
+// Movies.jsx
+
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { deleteData, getBooksData } from "../../Redux/action";
-// import EditBooks from "../edit books/EditBooks";
 import { deleteMovieData, getMoviesData } from "../../redux/action";
 import MoviesGrid from "../MoviesGrid/MoviesGrid";
 import Editmovie from "../Edit movie/Editmovie";
+import SkeletonLoading from "../SkeletonLoading/SkeletonLoading";
 import "./Movies.css";
 
 const Movies = () => {
@@ -20,20 +21,23 @@ const Movies = () => {
     category: "",
     userId: "",
     search: "",
-    // page: 1,
-    // limit: 8,
+    page: 1,
+    limit: 8,
   });
 
+  const [loading, setLoading] = useState(true); // Local loading state
+
   useEffect(() => {
-    dispatch(getMoviesData(query));
+    setLoading(true); // Set loading to true when starting the data fetching process
+    dispatch(getMoviesData(query))
+      .then(() => setLoading(false)) // Set loading to false when data fetching is completed
+      .catch(() => setLoading(false)); // Set loading to false in case of any errors
   }, [dispatch, query]);
 
   const handleQuery = (e) => {
     const { name, value } = e.target;
     setQuery({ ...query, [name]: value });
   };
-
-  console.log(movies);
 
   const HandleEditMovie = (movie) => {
     setShow(true);
@@ -47,8 +51,6 @@ const Movies = () => {
   const handleDelete = (id) => {
     dispatch(deleteMovieData(id));
   };
-
-  console.log(totalPages);
 
   return (
     <div className="mainDiv">
@@ -116,29 +118,35 @@ const Movies = () => {
       <div
         style={{ marginTop: "5rem", paddingLeft: "1rem", paddingRight: "1rem" }}
       >
-        {show ? (
+        {loading ? (
+          <SkeletonLoading />
+        ) : show ? (
           <Editmovie moviesD={movieD} setShow={setShow} />
         ) : (
           <MoviesGrid
             movies={movies}
             handleDelete={handleDelete}
             HandleEditMovie={HandleEditMovie}
+            setShow={setShow}
           />
         )}
       </div>
-
-      {/* <div>
-        {[...new Array(totalPages)].map((el, i) => {
-          return (
-            <button
-              disabled={query.page === i + 1}
-              onClick={() => handlePages(i + 1)}
-            >
-              {i + 1}
-            </button>
-          );
-        })}
-      </div> */}
+      {!show && (
+        <div className="button-container">
+          {[...new Array(totalPages)].map((el, i) => {
+            return (
+              <button
+                key={i}
+                className="button"
+                disabled={query.page === i + 1}
+                onClick={() => handlePages(i + 1)}
+              >
+                {i + 1}
+              </button>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };

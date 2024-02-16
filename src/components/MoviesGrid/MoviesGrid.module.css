@@ -10,11 +10,15 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .movieCard img {
   width: 100%;
-  height: auto;
+  height: 200px;
+  object-fit: cover;
 }
 
 .movieDetails {
@@ -28,4 +32,38 @@
 
 .movieDetails p {
   margin: 5px 0;
+}
+
+/* styles.css */
+
+.actions_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.actions_title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.actions_button {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 3px;
+  font-size: 16px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.actions_button:hover {
+  background-color: #0056b3;
 }

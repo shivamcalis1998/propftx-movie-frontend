@@ -20,11 +20,22 @@ const MoviesGrid = ({ movies, handleDelete, HandleEditMovie }) => {
             </p>
             <p>Rating: {movie?.rating}</p>
             <p>Language: {movie?.language}</p>
-            <div>
-              <p> actions</p>
+
+            <div className={styles.actions_container}>
+              <p className={styles.actions_title}>Actions</p>
               <div>
-                <button onClick={() => handleDelete(movie?._id)}>delete</button>
-                <button onClick={() => HandleEditMovie(movie)}>edit</button>
+                <button
+                  className={styles.actions_button}
+                  onClick={() => handleDelete(movie?._id)}
+                >
+                  Delete
+                </button>
+                <button
+                  className={styles.actions_button}
+                  onClick={() => HandleEditMovie(movie)}
+                >
+                  Edit
+                </button>
               </div>
             </div>
           </div>
