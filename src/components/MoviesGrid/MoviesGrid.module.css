@@ -1,0 +1,31 @@
+/* MoviesGrid.module.css */
+
+.moviesGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.movieCard {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.movieCard img {
+  width: 100%;
+  height: auto;
+}
+
+.movieDetails {
+  padding: 10px;
+}
+
+.movieDetails h2 {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.movieDetails p {
+  margin: 5px 0;
+}
