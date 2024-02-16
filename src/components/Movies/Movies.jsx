@@ -83,7 +83,7 @@ const Movies = () => {
               onChange={handleQuery}
               className="sortTimeSelect"
             >
-              <option value="">Select Sort</option>
+              <option value="">Select Sort By Date</option>
               <option value="asc">Ascending</option>
               <option value="desc">Descending</option>
             </select>
@@ -92,7 +92,7 @@ const Movies = () => {
           <div>
             <input
               type="text"
-              placeholder="Search by title"
+              placeholder="Search by title And Director"
               name="search"
               value={query.search}
               onChange={handleQuery}
