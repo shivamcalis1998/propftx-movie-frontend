@@ -63,9 +63,16 @@
 
 .closeBtn {
   font-size: 20px;
-  background-color: #090000;
-  color: aqua;
-  /* padding: 10px; */
-  /* padding-top: -20px;
-    padding-bottom: -20px; */
+  background-color: #9fba63;
+  color: #fff;
+  border: none;
+  padding: 0px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.closeBtn:hover {
+  background-color: #859f48; /* Darker red on hover */
+  color: #fff; /* White text color on hover */
 }
