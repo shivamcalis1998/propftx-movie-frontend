@@ -4,10 +4,10 @@ import axios from "axios";
 
 export const getMoviesData = (query) => async (dispatch) => {
   try {
-    const { language, sort, search, sortD, page, limit } = query;
+    const { language, sort, search, sortD } = query;
 
     const response = await axios.get(
-      `https://propftx-movie-backend-ojpq.onrender.com/movies?language=${language}&sort=${sort}&sortD=${sortD}&search=${search}&page=${page}&limit=${limit}`,
+      `https://propftx-movie-backend-ojpq.onrender.com/movies?language=${language}&sort=${sort}&sortD=${sortD}&search=${search}`,
       {
         headers: {
           "Content-Type": "application/json",

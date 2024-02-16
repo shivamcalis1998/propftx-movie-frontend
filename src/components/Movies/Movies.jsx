@@ -20,8 +20,8 @@ const Movies = () => {
     category: "",
     userId: "",
     search: "",
-    page: 1,
-    limit: 8,
+    // page: 1,
+    // limit: 8,
   });
 
   useEffect(() => {
@@ -127,7 +127,7 @@ const Movies = () => {
         )}
       </div>
 
-      <div>
+      {/* <div>
         {[...new Array(totalPages)].map((el, i) => {
           return (
             <button
@@ -138,7 +138,7 @@ const Movies = () => {
             </button>
           );
         })}
-      </div>
+      </div> */}
     </div>
   );
 };
