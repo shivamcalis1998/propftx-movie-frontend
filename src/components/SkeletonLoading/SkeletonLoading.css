@@ -9,7 +9,7 @@
   width: 80%;
   height: 40px;
   background-color: #d8d9e7;
-  margin: 8px;
+  margin: 8px auto;
   border-radius: 8px;
   animation: pulse 1.5s ease-in-out infinite alternate;
 }
