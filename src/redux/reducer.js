@@ -1,13 +1,34 @@
-import { MOVIE_DELETE, MOVIE_GET, MOVIE_POST, MOVIE_PUT } from "./actionTypes";
+import {
+  MOVIE_DELETE,
+  LOGIN_SUCCESS,
+  LOGOUT_SUCCESS,
+  MOVIE_GET,
+  MOVIE_POST,
+  MOVIE_PUT,
+} from "./actionTypes";
 
 const initialState = {
   movies: null,
   totalPages: null,
+  token: localStorage.getItem("token") || null,
+  role: localStorage.getItem("role") || null,
+  userId: localStorage.getItem("userId") || null,
 };
 
 const storeReducer = (store = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
+    case LOGIN_SUCCESS:
+      return {
+        ...store,
+        token: payload.token,
+        role: payload.role,
+        userId: payload.userId,
+        error: null,
+      };
+
+    case LOGOUT_SUCCESS:
+      return { ...store, token: null, role: null, userId: null, errors: null };
     case MOVIE_GET:
       return {
         ...store,

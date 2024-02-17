@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { editMovieData } from "../../redux/action";
 import { useNavigate } from "react-router-dom";
 
-const HandleEdit = ({ moviesD, setShow }) => {
+const HandleEdit = ({ token, moviesD, setShow }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -23,18 +23,18 @@ const HandleEdit = ({ moviesD, setShow }) => {
     });
   };
 
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
+  // useEffect(() => {
+  //   console.log(formData);
+  // }, [formData]);
 
   const handleClose = () => {
     setShow(false);
-    navigate("/");
+    navigate("/movies");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await dispatch(editMovieData(formData, moviesD._id));
+    await dispatch(editMovieData(token, formData, moviesD._id));
 
     setFormData({
       title: "",
@@ -44,7 +44,7 @@ const HandleEdit = ({ moviesD, setShow }) => {
       image: "",
     });
     setShow(false);
-    navigate("/");
+    navigate("/movies");
   };
 
   return (

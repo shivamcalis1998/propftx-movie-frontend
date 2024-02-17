@@ -8,7 +8,7 @@ import Editmovie from "../Edit movie/Editmovie";
 import SkeletonLoading from "../SkeletonLoading/SkeletonLoading";
 import "./Movies.css";
 
-const Movies = () => {
+const Movies = ({ token }) => {
   const { movies, totalPages } = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -25,14 +25,14 @@ const Movies = () => {
     limit: 8,
   });
 
-  const [loading, setLoading] = useState(true); // Local loading state
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true); // Set loading to true when starting the data fetching process
-    dispatch(getMoviesData(query))
-      .then(() => setLoading(false)) // Set loading to false when data fetching is completed
-      .catch(() => setLoading(false)); // Set loading to false in case of any errors
-  }, [dispatch, query]);
+    setLoading(true);
+    dispatch(getMoviesData(query, token))
+      .then(() => setLoading(false))
+      .catch(() => setLoading(false));
+  }, [dispatch, token, query]);
 
   const handleQuery = (e) => {
     const { name, value } = e.target;
@@ -49,7 +49,7 @@ const Movies = () => {
   };
 
   const handleDelete = (id) => {
-    dispatch(deleteMovieData(id));
+    dispatch(deleteMovieData(token, id));
   };
 
   return (
@@ -121,13 +121,14 @@ const Movies = () => {
         {loading ? (
           <SkeletonLoading />
         ) : show ? (
-          <Editmovie moviesD={movieD} setShow={setShow} />
+          <Editmovie token={token} moviesD={movieD} setShow={setShow} />
         ) : (
           <MoviesGrid
             movies={movies}
             handleDelete={handleDelete}
             HandleEditMovie={HandleEditMovie}
             setShow={setShow}
+            language={query.language}
           />
         )}
       </div>

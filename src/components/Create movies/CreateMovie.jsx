@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { createMovieData } from "../../redux/action";
 import { useNavigate } from "react-router-dom";
 
-const CreateMovie = () => {
+const CreateMovie = ({ token }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -23,17 +23,17 @@ const CreateMovie = () => {
     });
   };
 
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
+  // useEffect(() => {
+  //   console.log(formData);
+  // }, [formData]);
 
   const handleClose = () => {
-    navigate("/");
+    navigate("/movies");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await dispatch(createMovieData(formData));
+    await dispatch(createMovieData(formData, token));
 
     setFormData({
       title: "",
@@ -42,13 +42,13 @@ const CreateMovie = () => {
       rating: "",
       image: "",
     });
-    navigate("/");
+    navigate("/movies");
   };
 
   return (
     <div className={styles.container}>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <h2 className={styles.heading}>Create Book</h2>
+        <h2 className={styles.heading}>Create Movie</h2>
         <button onClick={() => handleClose()} className={styles.closeBtn}>
           X
         </button>
