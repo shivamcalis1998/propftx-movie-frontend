@@ -15,6 +15,8 @@ const CreateMovie = ({ token }) => {
     image: "",
   });
 
+  // console.log(token);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({

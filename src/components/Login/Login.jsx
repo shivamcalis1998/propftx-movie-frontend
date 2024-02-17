@@ -60,7 +60,7 @@ const Login = () => {
           <h2>{isLogin ? "Login" : "Sign Up"}</h2>
 
           {loading ? (
-            <SkeletonLoading /> // Render skeleton loading component when loading is true
+            <SkeletonLoading />
           ) : (
             <form onSubmit={handleSubmit}>
               <input

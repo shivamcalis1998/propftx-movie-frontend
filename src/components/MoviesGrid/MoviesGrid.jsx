@@ -6,7 +6,7 @@ const MoviesGrid = ({ movies, handleDelete, HandleEditMovie, language }) => {
   const role = useSelector((state) => state.role);
   return (
     <div className={styles.moviesGrid}>
-      {movies.length > 0 ? (
+      {movies?.length > 0 ? (
         movies?.map((movie) => (
           <div key={movie?._id} className={styles.movieCard}>
             <img src={movie?.image} alt={movie.title} />
