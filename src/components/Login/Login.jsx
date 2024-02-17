@@ -13,11 +13,8 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [loading, setLoading] = useState(false);
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
     if (isLogin) {
       dispatch(login(userData));
       navigate("/movies");
@@ -56,30 +53,25 @@ const Login = () => {
         <div className="form-container">
           <h2>{isLogin ? "Login" : "Sign Up"}</h2>
 
-          {loading ? (
-            <SkeletonLoading />
-          ) : (
-            <form onSubmit={handleSubmit}>
-              <input
-                name="email"
-                onChange={takeUserData}
-                value={userData.email}
-                type="email"
-                placeholder="Email"
-                required
-              />
-              <input
-                name="password"
-                onChange={takeUserData}
-                value={userData.password}
-                type="password"
-                placeholder="Password"
-                required
-              />
-              <button type="submit">{isLogin ? "Login" : "Sign up"}</button>
-            </form>
-          )}
-
+          <form onSubmit={handleSubmit}>
+            <input
+              name="email"
+              onChange={takeUserData}
+              value={userData.email}
+              type="email"
+              placeholder="Email"
+              required
+            />
+            <input
+              name="password"
+              onChange={takeUserData}
+              value={userData.password}
+              type="password"
+              placeholder="Password"
+              required
+            />
+            <button type="submit">{isLogin ? "Login" : "Sign up"}</button>
+          </form>
           <p onClick={handleSwitchForm} className="switch-form">
             {isLogin
               ? "Don't have an account? Sign Up"
