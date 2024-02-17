@@ -58,7 +58,7 @@ const MoviesGrid = ({ movies, handleDelete, HandleEditMovie, language }) => {
             marginLeft: "90%",
           }}
         >
-          No Movie avilable in {language} language....
+          No Movie available in {language} language....
         </h1>
       )}
     </div>
