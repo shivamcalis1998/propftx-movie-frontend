@@ -3,7 +3,6 @@ import "./Login.css";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login, signup } from "../../redux/action";
-import SkeletonLoading from "../SkeletonLoading/SkeletonLoading";
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -20,9 +19,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     if (isLogin) {
-      dispatch(login(userData))
-        .then(() => setLoading(false))
-        .catch(() => setLoading(false));
+      dispatch(login(userData));
       navigate("/movies");
     } else {
       dispatch(signup(userData));
