@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "../Create movies/CreateMovie.module.css";
 import { useDispatch } from "react-redux";
 import { editMovieData } from "../../redux/action";

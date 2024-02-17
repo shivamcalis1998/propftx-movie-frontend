@@ -46,6 +46,9 @@ const Login = () => {
         Only email id with <span className="admin-word">admin</span> word can
         perform CRUD operation
       </h1>
+      <h1 style={{ color: "rgb(85, 9, 225)" }}>
+        Example - shivamswamiadmin252@gmail.com
+      </h1>
       <div className="login-container">
         <div className="form-container">
           <h2>{isLogin ? "Login" : "Sign Up"}</h2>
